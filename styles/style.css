@@ -44,6 +44,19 @@ h4 {
     width: 100%;
 }
 
+.invisible {
+    display: none;
+}
+
+.centered-form-title {
+    text-align: center;
+    margin-bottom: 0;
+    align-self: center;
+}
+
+.form-centered {
+    top: 16%;
+}
 
 .button {
     width: auto;
@@ -51,6 +64,8 @@ h4 {
     color: #fff;
     text-align: center;
     font-size: 1rem;
+    border: none;
+    cursor: pointer;
 }
 
 .button-primary {
@@ -120,6 +135,10 @@ header .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#btn-logo {
+    font-weight: 800;
 }
 
 .navbar-content ul {
@@ -332,7 +351,7 @@ header .navbar {
     right: 0;
 }
 
-.contact-form h3 {
+.form-title {
     margin-bottom: 1rem;
 }
 
@@ -346,11 +365,13 @@ form {
     width: 100%;
 }
 
-input[type=text] {
+input[type=text],
+input[type=email] {
     border: none;
     border-bottom: 1px solid var(--gray5);
     height: 3rem;
     margin-bottom: 2.5rem;
+    width: 100%;
 }
 
 ::placeholder {
@@ -376,13 +397,15 @@ input[type=text] {
     font-size: 1.15rem;
 }
 
-input[type=text] {
+input[type=text],
+input[type=email] {
     font-family: 'Inter', sans-serif;
     padding: 1rem 1rem;
     font-size: 1.1rem;
 }
 
-input[type=submit] {
+input[type=submit],
+input[type=email] {
     align-self: flex-start;
     cursor: pointer;
 }

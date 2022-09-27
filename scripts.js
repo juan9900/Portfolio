@@ -1,3 +1,6 @@
+const contactForm = document.getElementById('contact-form');
+
+
 // When the user scrolls the page, execute myFunction
 window.onscroll = function () { myFunction() };
 
@@ -46,3 +49,95 @@ linksContainers.forEach(container => {
         }
     });
 });
+
+/*
+
+$('contact-form').addEventListener('submit', (e) => {
+    // e.preventDefault();
+    // let xhr = new XMLHttpRequest();
+    // xhr.open("POST", "https://formsubmit.co/829b4e1afbc9484f01f5d68ec30f3c57");
+
+    // xhr.setRequestHeader("Accept", "application/json");
+    // xhr.setRequestHeader("Content-Type", "application/json");
+
+    // const name = contactForm.elements.formName.value;
+    // const email = contactForm.elements.formEmail.value
+    // const message = contactForm.elements.formMessage.value
+    // xhr.onload = () => console.log();
+
+    // let data = `{
+    // "Name": ${name},
+    // "Email": ${email},
+    // "Message": ${message};
+    // }`;
+
+    // xhr.send(data)
+    console.log('enviado')
+    e.preventDefault();
+    // fetch("https://formsubmit.co/ajax/829b4e1afbc9484f01f5d68ec30f3c57", {
+    //     method: "POST",
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Accept': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //         name: 'nombre'
+    //         // $('#contact-form').elements.formName.value
+    //         ,
+    //         email: 'email'
+    //         // $('#contact-form').elements.formEmail.value
+    //         ,
+    //         message: 'mensaje'
+    //         // $('#contact-form').elements.formMessage.value
+    //     })
+    // })
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(error => console.log(error));
+
+})
+*/
+
+$('#contact-form').submit(function (e) {
+    e.preventDefault();
+    console.log(e);
+    console.log($('#contact-form').find('input[name="formName"]').val())
+    const formName = $('#formName').val();
+    const formEmail = $('#formEmail').val();
+    const formMessage = $('#formMessage').val();
+
+    $.ajax({
+        method: 'POST',
+        url: 'https://formsubmit.co/ajax/829b4e1afbc9484f01f5d68ec30f3c57',
+        dataType: 'json',
+        accepts: 'application/json',
+        data: {
+            name: formName,
+            email: formEmail,
+            message: formMessage
+        },
+        success: (data) => {
+            console.log(data)
+            hideContactForm();
+        },
+        error: (err) => console.log(err)
+    });
+});
+
+function hideContactForm() {
+    $('#form-title').addClass('centered-form-title');
+    $('#form-title').removeClass('form-title')
+    $('#form-title').text('Message sent successfully!');
+    $('#contact-form').addClass('invisible');
+    $('#form-message').addClass('invisible');
+    $('#contact-form-container').addClass('form-centered')
+    if ($(window).width() < 500) {
+        $('.contact-container').css('height', '200px')
+    } else if ($(window).width() < 1250) {
+        $('.contact-container').css('height', '300px')
+    } else {
+        $('.contact-container').css('height', '660px')
+
+    }
+}
+

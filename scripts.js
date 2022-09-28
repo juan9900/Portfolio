@@ -1,3 +1,24 @@
+const links = {
+    HypedStreet: {
+        github: "https://github.com/juan9900/PaginaModa",
+        website: 'https://juan9900.github.io/PaginaModa/'
+    },
+    F1: {
+        github: "https://github.com/juan9900/f1",
+        website: 'https://juan9900.github.io/f1/'
+    },
+    Bienes: {
+        github: "https://github.com/juan9900/BienesRaices",
+        website: 'https://juan9900.github.io/BienesRaices/'
+    },
+    QuizUp: {
+        github: 'https://github.com/juan9900/QuizUp',
+        website: 'https://juan9900.github.io/QuizUp/'
+    }
+}
+
+
+
 const contactForm = document.getElementById('contact-form');
 
 
@@ -100,8 +121,6 @@ $('contact-form').addEventListener('submit', (e) => {
 
 $('#contact-form').submit(function (e) {
     e.preventDefault();
-    console.log(e);
-    console.log($('#contact-form').find('input[name="formName"]').val())
     const formName = $('#formName').val();
     const formEmail = $('#formEmail').val();
     const formMessage = $('#formMessage').val();
@@ -115,13 +134,17 @@ $('#contact-form').submit(function (e) {
             name: formName,
             email: formEmail,
             message: formMessage
-        },
-        success: (data) => {
+        }
+    })
+        .always(function () {
+            console.log('sending');
+        })
+        .done((data) => {
             console.log(data)
             hideContactForm();
-        },
-        error: (err) => console.log(err)
-    });
+        })
+        .fail((err) => console.log(err))
+
 });
 
 function hideContactForm() {
@@ -141,3 +164,36 @@ function hideContactForm() {
     }
 }
 
+$(document).ready(function () {
+    console.log('ready')
+    $('#button-close-modal').click(function () {
+        console.log('closed')
+        $('.modal').css('display', 'none')
+        $('.modal-content').removeClass('modal-open').addClass('modal-close')
+    })
+})
+
+$('.button-know-more').click(function (e) {
+
+    const websiteDesc = $(this).parent().siblings('h4').html();
+    const websiteName = websiteDesc.split(" ")[0].replace(/\s/g, '');
+    console.log(websiteName);
+    $('#modal-work-title').html(websiteDesc)
+
+
+
+    for (var link in links) {
+        if (websiteName === link) {
+            $('#modal-github-link').attr('href', links[link].github);
+            $('#modal-website-link').attr('href', links[link].website);
+        }
+    }
+
+
+    $('.modal-content').addClass('modal-open').removeClass('modal-close')
+    $('.modal').css('display', 'flex')
+
+
+    /*TODO: falta poner dinamicamente el titulo del modal al igual
+    que el link, hay que obtener el texto del h3 mas cercano */
+})

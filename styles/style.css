@@ -6,6 +6,7 @@ body {
 body {
     font-family: 'Inter', sans-serif;
     position: relative;
+    background-color: #fdfdfd;
 }
 
 a {
@@ -66,6 +67,8 @@ h4 {
     font-size: 1rem;
     border: none;
     cursor: pointer;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
 }
 
 .button-primary {
@@ -117,6 +120,9 @@ h4 {
     --gray3: #828282;
     --dark: #0B0D17;
     --accentBlue: #5393e7;
+    --modalBackground: rgb(194, 194, 194);
+    --modalButtonBackground: rgb(225, 225, 225);
+    --modalButtonBackgroundDarker: rgb(182, 182, 182);
 }
 
 
@@ -308,6 +314,110 @@ header .navbar {
 .work-info p {
     flex: 3;
 }
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.35);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 4;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+
+}
+
+.modal-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 100%;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--dark);
+    color: #fff;
+}
+
+
+
+@keyframes appear {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    opacity: 0;
+    transform: scale(.6);
+    pointer-events: visible;
+}
+
+.modal-open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: visible;
+}
+
+.modal-content {
+    box-shadow: 0px 1px 20px 0px rgba(61, 61, 61, 0.677);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 15% from the top and centered */
+    width: 35%;
+    height: 20%;
+    border-radius: 10px;
+    /* Could be more or less, depending on screen size */
+    background-color: #fdfdfd;
+    padding: 1rem;
+    /* transition-timing-function: ease-in-out; */
+
+}
+
+.modal-content p {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.button-modal {
+    border: 2px solid var(--purple);
+    border-radius: 20px;
+    margin: 0 0.5rem;
+    background-color: #fff;
+    color: var(--purple);
+    width: 45%;
+    font-size: 0.9rem;
+}
+
+.button-modal:hover {
+    background-color: var(--purple);
+    color: #fff;
+
+}
+
 
 .button-know-more {
     flex: 1;
@@ -586,9 +696,38 @@ footer {
         width: 100%;
     }
 
+    .modal-content {
+        flex-direction: column;
+        width: 60%;
+    }
+
+    .button-modal {
+        margin: 0.5rem 0;
+    }
 
 
 
+}
+
+@media (max-width: 768px) {
+    .modal-buttons-container {
+        flex-direction: column;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        width: 90%;
+        height: 25%;
+    }
+
+    .button-modal {
+        width: 60%;
+    }
+
+    input[type=text],
+    input[type=email] {
+        font-size: 0.7rem;
+    }
 }
 
 @media (max-width: 500px) {
@@ -668,6 +807,14 @@ footer {
     .work-info p {
         flex: 2;
     }
+
+
+
+    .modal-content {
+        height: 35%;
+    }
+
+
 
     #contact-section {
         display: flex;

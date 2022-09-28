@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/style.css">
+
     <script src="https://kit.fontawesome.com/dd425220c4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <title>Juan Lauretta</title>
@@ -18,24 +19,28 @@
 
 <body>
     <header>
+        <a id="btn-logo" href="#" class="logo">Juan Lauretta</a>
+        <div class="navbar-icon-container">
+            <i id="button-open-navbar" class="fas fa-bars button-toggle-navbar"></i>
+            <i id="button-close-navbar" class=" fas fa-times button-toggle-navbar invisible"></i>
+        </div>
+
         <nav id="navbar" class="navbar">
-            <div class="navbar-content container">
-                <a id="btn-logo" href="#" class="logo nav-link">Juan Lauretta</a>
-                <ul>
-                    <a id="btn-about" class="nav-link" href="#about-section">
-                        <li>About</li>
-                    </a>
-                    <a id="btn-skills" class="nav-link" href="#technologies-section">
-                        <li>Skills</li>
-                    </a>
-                    <a id="btn-works" class="nav-link" href="#works-section">
-                        <li>Works</li>
-                    </a>
-                    <a id="btn-contact" class="nav-link" href="#contact-section">
-                        <li>Contact</li>
-                    </a>
-                </ul>
-            </div>
+            <ul>
+                <a id="btn-about" class="nav-link" href="#about-section">
+                    <li>About</li>
+                </a>
+                <a id="btn-skills" class="nav-link" href="#technologies-section">
+                    <li>Skills</li>
+                </a>
+                <a id="btn-works" class="nav-link" href="#works-section">
+                    <li>Works</li>
+                </a>
+                <a id="btn-contact" class="nav-link" href="#contact-section">
+                    <li>Contact</li>
+                </a>
+            </ul>
+
         </nav>
     </header>
 
@@ -46,6 +51,7 @@
                 or personal brand which needs a stunning website
                 to attract customers? I can help you with that.
             </p>
+
             <a class="button button-primary button-view-more" href="#works-section">View more</a>
         </div>
         <div class="hero-image-container">
@@ -138,7 +144,8 @@
             <div class="modal">
                 <div class="modal-content modal-close">
                     <button id="button-close-modal"><i class="fas fa-times"></i></button>
-                    <p class="lead1" id="modal-work-title"></p>
+                    <p class="lead1 " id="modal-work-title"></p>
+                    <p class="lead1" id="modal-web-description"></p>
                     <div class="modal-buttons-container">
                         <a target="_blank" id="modal-github-link" class="button button-modal" href="#"><i
                                 class="fab fa-github"></i>
@@ -204,7 +211,6 @@
 
     <footer>
         <div class="footer-content container">
-            <p>&copy; Juan Lauretta. All rights reserved</p>
             <ul class="socials">
                 <li><a target="_blank" href="https://www.instagram.com/juan_lauretta/"><i
                             class="fab fa-instagram"></i></a></li>

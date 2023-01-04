@@ -18,6 +18,16 @@ const links = {
         github: 'https://github.com/juan9900/QuizUp',
         website: 'https://juan9900.github.io/QuizUp/',
         description: 'Small game inspired in Trivia Crack made with HTML + CSS + JS with api calls and AJAX'
+    },
+    Zetagroupve: {
+        github: 'https://github.com/juan9900/zetagroup',
+        website: 'https://zetagrouptestmdn.netlify.app/#es',
+        description: 'Webiste for architecture firm made with HTML + CSS + JS'
+    },
+    Gif: {
+        github: 'https://github.com/juan9900/gif-browser-app',
+        website: 'https://gifbrowserjuan.netlify.app',
+        description: 'Website for gif search made with ReactJS + Giphy API'
     }
 }
 
@@ -157,7 +167,6 @@ $('.button-know-more').click(function (e) {
 
     const websiteDesc = $(this).parent().siblings('h4').text();
     const websiteName = websiteDesc.split(" ")[0].replace(/\s/g, '');
-    console.log(websiteName);
     $('#modal-work-title').text(websiteDesc)
 
 
